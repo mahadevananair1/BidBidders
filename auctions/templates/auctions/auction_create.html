@@ -1,0 +1,28 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+<h2 class='display-2 text-center'style='background:linear-gradient( 135deg, #EECE13 10%, #B210FF 100%);-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;'><strong>Enter Product Details !</strong></h2>
+<hr class="container">
+
+<form method='POST' style="background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); margin :80px auto; padding:40px; border-radius:30px;box-shadow:  20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;" class="col-4 container justify-content-center form-control" style="margin: 20px auto;"> 
+    {% csrf_token %}
+    Title:
+    {{ form.as_p }}
+
+    <hr>
+
+    <div class="alert alert-warning" role="alert">
+        NOTE: Image Link 1 is the primary image that will be displayed
+      </div>
+
+      <hr>
+   
+    <input class="btn btn-primary" type="submit" value='Start Auction'/>
+</form>
+
+    
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+    <h1>Name : <span  style="font-size: 200px;color: cornflowerblue;">{{request.user.username}}</span></h1>
+    <h3>your email : {{request.user.email}}</h3>
+    <p style="color: coral;">{{request.user.id}}</p>
+
+
+{% endblock %}

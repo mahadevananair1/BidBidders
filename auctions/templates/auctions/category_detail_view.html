@@ -1,0 +1,126 @@
+
+
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+<h2 class='display-2 text-center'style='background: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;'><strong>{{ categoryname }}</strong></h2>
+<hr class="container">
+
+    
+    <div class="row d-flex justify-content-center" >
+        <!-- Grid column -->
+        <div class="col-xl-7 pb-2">
+            {% if empty %}
+                <h3>No Active Listings available</h3>
+            {% else %}
+                {% for product in products%}
+                    <br>
+                    <!-- Card Regular -->
+                    <div class="card card-cascade"style="border-radius: 10px;box-shadow:  20px 20px 60px #bebebe,
+                    -20px -20px 60px #ffffff;" >
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay " >
+
+                            {% if product.image_link1%}
+                            <img src="{{product.image_link1}}" alt="{{ image.alt_text }}" class="d-block w-100" style="height: 500px;width: 500px">
+                            {% endif %}
+                        </div>
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade " >
+                            <!-- Title -->
+                            <h2 class="card-title display-2"><strong>{{product.name}}</strong></h2>
+                            <!-- Subtitle -->
+                            
+                            <h3 class="badge" style="background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%)">{{product.category}}</h3>
+                            <!-- Text -->
+                            <p class="lead">Seller : {{product.owner_id}} <br> </p>
+                            <!-- Text -->
+                            <p class=""><em>Description:</em></p>
+                            <p class="">{{product.descriptiion}} <br> </p>
+                            <!-- Price -->
+                            <p class="font-weight-bold">Initial Bid: {{product.initial_bid}}$ <br> </p>
+                            <!-- Button -->
+
+                            {% if product.current_largest_bid %}
+                            <button class="font-weight-bold" style="background-color: #FBAB7E;
+                            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+                            border: 0px; border-radius: 10px; zoom: 1.2;" > Current bid : {{product.current_largest_bid}}$ <br> </button>
+                            {% else %}
+                            <p class="font-weight-bold" style="color: rgb(0, 60, 255);" >No bids made <br> </p>
+                            {% endif %}
+                            <div style="margin-top: 10px;">
+                            <a href="{% url 'viewlisting' product.id %}">
+                            <button style="background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%); border: 0px;" class="btn btn-primary">View Details</button>
+                        </a>    
+                        </div>
+                        </div>
+                        <!-- Card footer -->
+                        <div class="card-footer text-muted text-center">
+                            {{product.date_created}}
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Card Regular -->
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="col-xl-7 pb-2">
+            <hr>
+            <hr>
+            <h1 style="color: teal;">Closed Auctions</h1>
+                {% for product in closedproducts%}
+                    <br>
+                    <!-- Card Regular -->
+                    <div class="card card-cascade"style="border-radius: 10px;box-shadow:  20px 20px 60px #bebebe,
+                    -20px -20px 60px #ffffff;" >
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay " >
+
+                            {% if product.image_link1%}
+                            <img src="{{product.image_link1}}" alt="{{ image.alt_text }}" class="d-block w-100" style="height: 500px;width: 500px">
+                            {% endif %}
+                        </div>
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade " >
+                            <!-- Title -->
+                            <h2 class="card-title display-2"><strong>{{product.name}}</strong></h2>
+                            <!-- Subtitle -->
+                            
+                            <h3 class="badge" style="background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%)">{{product.category}}</h3>
+                            <!-- Text -->
+                            <p class="lead">Seller : {{product.owner_id}} <br> </p>
+                            <!-- Text -->
+                            <p class=""><em>Description:</em></p>
+                            <p class="">{{product.descriptiion}} <br> </p>
+                            <!-- Price -->
+                            <p class="font-weight-bold">Initial Bid: {{product.initial_bid}}$ <br> </p>
+                            <!-- Button -->
+
+                            {% if product.current_largest_bid %}
+                            <button class="font-weight-bold" style="background-color: #FBAB7E;
+                            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+                            border: 0px; border-radius: 10px; zoom: 1.2;" > Current bid : {{product.current_largest_bid}}$ <br> </button>
+                            {% else %}
+                            <p class="font-weight-bold" style="color: rgb(0, 60, 255);" >No bids made <br> </p>
+                            {% endif %}
+                            <div style="margin-top: 10px;">
+                            <a href="{% url 'viewlisting' product.id %}">
+                            <button style="background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%); border: 0px;" class="btn btn-primary">View Details</button>
+                        </a>    
+                        </div>
+                        </div>
+                        <!-- Card footer -->
+                        <div class="card-footer text-muted text-center">
+                            {{product.date_created}}
+                        </div>
+                    </div>
+                    <!-- Card Regular -->
+                    {% empty %}
+                    <h1>No closed listings</h1>
+                {% endfor %}
+            
+        </div>
+{% endblock %}

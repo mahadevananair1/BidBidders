@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+   
+<h2 class='display-2 text-center'style='background: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;'><strong>Categories</strong></h2>
+<hr class="container">
+
+
+{% for category in category_list %}
+
+<div class="text-center text-light" style="margin: 20px auto;">
+<h1 class="btn btn-light" style="background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);border-radius: 30px; zoom: 1.1;
+" ><a style="text-decoration: none;" href="{% url 'category_view' category.id %}"><h1 style="color: white;">{{ category.category }}</h1></a></h1>
+</div>
+<hr class="col-4" style="margin: 0 auto;" >
+{% empty %}
+<h1>no categories created by admin</h1>
+
+{% endfor %}
+{% endblock %}

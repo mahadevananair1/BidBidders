@@ -119,6 +119,9 @@ ipch/
 # TFS 2012 Local Workspace
 $tf/
 
+#venv Folder
+venv
+
 # Guidance Automation Toolkit
 *.gpState
 
