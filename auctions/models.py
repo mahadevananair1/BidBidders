@@ -17,7 +17,7 @@ class Category(models.Model):
 class AuctionList(models.Model):
     # Data contained with the data base
     name = models.CharField(max_length = 30)
-    descriptiion = models.TextField(blank = True, null = True)
+    description = models.TextField(blank = True, null = True)
     initial_bid = models.DecimalField(decimal_places= 2,null= False,blank= False,max_digits = 1000)
     status = models.BooleanField(default = True) 
     date_created = models.DateTimeField(default = timezone.now)
